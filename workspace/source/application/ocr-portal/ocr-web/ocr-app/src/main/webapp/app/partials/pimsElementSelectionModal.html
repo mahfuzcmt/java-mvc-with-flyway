@@ -1,0 +1,30 @@
+
+ 
+<div class="modal-header">
+	<h4 class="modal-title ng-binding">
+		<span ></span>{{modalOptions.headerText}}
+	</h4>
+</div>
+<form>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="form-group">
+					<label>Which?<span class="mandatory">*</span></label>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<select ui-select2 data-ng-model="modalOptions.selectedPimsElement" class="form-control selection-box" data-placeholder="Select Option">
+						<option></option>
+						<option data-ng-repeat="pimsElement in modalOptions.pimsElementList" value="{{pimsElement.key}}">{{pimsElement.value}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="w3-btn w3-teal"data-ng-click="modalOptions.ok(modalOptions.selectedPimsElement)">Go</button>
+		<button class="w3-btn w3-sand"data-ng-click="modalOptions.close()">Cancel</button>
+	</div>
+</form>

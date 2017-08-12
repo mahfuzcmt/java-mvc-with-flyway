@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4 class="modal-title ng-binding">
+	<span >Add ledger Sub Group </span>
+	</h4>
+</div>
+<form>
+    <div class="modal-body">
+        <form role="form" name="gradeform">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="mandatory">ledger Group Name</label>
+                        <select id="ledgerGroupName" ui-select2 data-ng-model="ledger.ledgerGroupOID" class="form-control selection-box" data-placeholder="Select ledger Group Name">
+                            <option></option>
+                            <option data-ng-selected="{{ledgerGroupName.key == ledger.ledgerGroupName}}" data-ng-repeat="ledgerGroupName in ledgerGroupNameList" value="{{ledgerGroupName.key}}">{{ledgerGroupName.value}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="mandatory">Name<span class="mandatory"></span></label>
+                        <input type="text" id="ledgerSubGroupName" class="form-control" placeholder="Enter ledger Sub Group Name" data-ng-model="ledger.ledgerSubGroupName" />
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    </form>
+    </div>
+    <div class="modal-footer">
+        <button class="w3-btn w3-teal" data-ng-click="save(ledger)">Save</button>
+        <button class="w3-btn w3-sand" data-ng-click="cancel()">Cancel</button>
+    </div>
+</form>

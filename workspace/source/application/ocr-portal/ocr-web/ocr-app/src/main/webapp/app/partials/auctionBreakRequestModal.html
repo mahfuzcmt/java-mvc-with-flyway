@@ -1,0 +1,34 @@
+
+ 
+<div class="modal-header">
+	<h4 class="modal-title ng-binding">
+		<span ></span>{{modalOptions.headerText}}
+	</h4>
+</div>
+<form>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Break Reason<span class="mandatory">*</span></label>
+					<textarea type="text" style="height: 70px" id="reasonDescription" class="form-control" placeholder="Enter Reason" data-ng-model="modalOptions.data.causeText"></textarea>
+				</div>
+				<div class="form-group">
+          			<label>Break Duration Time(Sec.)<span class="mandatory">*</span></label>
+          			<input type="text" id="actionBreaKDuration" class="form-control" placeholder="Enter Break Duration" data-ng-model="modalOptions.data.breakDurationTime" />
+       			</div>
+			</div>
+			<div class="col-md-6">
+				<div class="callout callout-info">
+		              <h4>Help Text</h4>
+		              <p>Please Write the Reason That You Need Break for  <span>{{modalOptions.data.duration}}</span> Seconds
+		             </p>
+			    </div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+	    <button class="btn btn-deafult" data-ng-click="modalOptions.close()"><i class="fa fa-times"></i>{{modalOptions.closeButtonText}}</button>
+		<input type="submit" class="btn btn-primary" value="Submit" data-ng-click="modalOptions.ok()" />
+	</div>
+</form>

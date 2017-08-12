@@ -1,0 +1,35 @@
+<section class="content-header">
+   <h1>Role List</h1>
+   <ol class="breadcrumb">
+      <li><a href="#/orgdashboard"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+      <li class="active">Role List</li>
+   </ol>
+</section>
+<section class="content animated slideInRight">
+   <div class="row">
+      <div class="col-md-12">
+         <div data-ng-include="messagePageLocation"></div>
+      </div>
+   </div>
+   <button class="w3-btn w3-deep-green w3-medium pull-right" data-ng-click="goToEntryPage()" > <i class="glyphicon glyphicon-file"></i> New</button>
+   
+           <div class="row">
+            <div class="col-md-12">
+            	<table class="table table-hover table-responsive grid-table">
+			      <thead>
+			         <tr>
+			            <th class="grid-col-left">Role ID</th>
+			            <th class="grid-col-left">Role Description</th>
+			            <th class="grid-col-center">Status</th>
+			         </tr>
+			      </thead>
+			      <tbody>
+			         <tr data-ng-repeat="obj in dataList">
+			            <td class="grid-col-left">{{obj.roleID}}</td>
+			            <td class="grid-col-left">{{obj.roleDescription}}</td>
+			            <td ng-class="{true:'grid-col-center green', false:'grid-col-center red'}[obj.status == 'Active' ]">{{obj.status}}</td>
+			         </tr>
+			      </tbody>
+			   </table>
+			   </div></div>
+</section>

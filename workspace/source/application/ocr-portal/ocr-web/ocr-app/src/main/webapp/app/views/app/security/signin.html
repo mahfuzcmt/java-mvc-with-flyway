@@ -1,0 +1,33 @@
+<section class="">
+    <div class="row animated fadeInDown">
+    	<div class="col-md-4 col-md-offset-4">
+		<div class="form-box" id="login-box">
+		<div class="header signin-header-bg-color">Welcome to <span class="doms-text">OCR</span></div>
+            <form method="post" data-ng-show="!forgotPasswordFrom">
+                <div class="body bg-doms-signin">       
+                    <div class="form-group signin-warning" data-ng-show="login.msg != 'Df1000'">
+                        <span data-i18n="{{login.msg}}"></span>
+                    </div>
+                    <div class="form-group"> 
+                        <input type="text" data-ng-model="login.loginID" name="loginID" class="form-control" placeholder="User ID" required autofocus="autofocus" onclick="this.setSelectionRange(0, this.value.length)" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" data-ng-model="login.password" name="password" class="form-control" placeholder="Password" onclick="this.setSelectionRange(0, this.value.length)" required />
+                    </div>          
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-signin btn-block btn-primary" ng-click="signIn(login)"><span class="font-white">Sign me in</span></button> 
+                    </div>
+                   <span class="link-pointer signin-other-link">forgot password?</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+

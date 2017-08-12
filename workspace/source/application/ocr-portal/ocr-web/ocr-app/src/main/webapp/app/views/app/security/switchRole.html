@@ -1,0 +1,31 @@
+<form>
+	<div id="mymodal">
+		<div class="modal-header modal-header-confirm">
+			<h4 class="modal-title ng-binding">
+				<span ></span>{{modalOptions.headerText}}
+			</h4>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-lg-8">
+					<label class="control-label">Secondary  Role</label>
+			        	<select data-ng-model="user.secondaryRole" ui-select2 class="form-control selection-box" data-placeholder="Select Secondary Role">
+							<option></option>
+							<option data-ng-repeat="role in modalOptions.rolejson" value="{{role}}">{{role}}</option>
+						</select>
+					<p/></p>
+				</div>
+			</div>
+		 	<div class="row">
+				<div class="col-lg-8">
+					<label class="control-label">Password</label>
+					<input type="password" id="txtPassword" class="form-control"  name="user.password" data-ng-model="user.password" data-placeholder="Enter Password"/>
+				</div>
+			</div> 	   
+		</div>
+		<div class="modal-footer">
+			<button id="btnsubmit" type="submit" class="btn btn-primary" data-ng-click="modalOptions.ok(user)">{{modalOptions.actionButtonText}}</button>
+			<button class="btn btn-deafult" data-ng-click="modalOptions.close()">{{modalOptions.closeButtonText}}</button>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,102 @@
+
+<div class="modal-content">
+	<div class="modal-header">
+        <button type="button" class="close" data-ng-click="cancel()">X</button>
+        <h4>Filter Options</h4>
+    </div>
+    
+	<form>
+	    <div class="modal-body">
+	    	
+	    	<table class="table filter-table">
+                <thead>
+                    <tr>
+                        <th class="grid-col-left" style="width:5px;">Operator</th>
+                        <th class="grid-col-left" style="width:200px;">Column</th>
+                        <th class="grid-col-left" style="width:140px;">Criteria</th>
+                        <th class="grid-col-left" style="width:50%;">Value</th>
+                        <th class="grid-col-right" style="width:10px;">
+                        	<button class="btn btn-xs btn-primary" data-ng-click="add()" data-toggle="tooltip" data-placement="top" title="Add">
+                        		<i class="glyphicon glyphicon-plus"></i>
+                        	</button>
+                        </th>
+                    </tr>
+                </thead>
+	            <tbody>
+	            	<tr data-ng-repeat="filterOption in filterOptions">
+	            		
+	            		<td class="grid-col-center">
+                        	<select data-ng-show="$index > 0" data-ng-model="filterOption.selectedOperator" class="select2bottomMargin margin-top-0" placeholder="Choose Operator">
+                               	<option data-ng-repeat="operator in filterOption.operators" data-ng-selected="operator.value==filterOption.selectedOperator" value="{{operator.value}}">{{operator.displayText}}</option>
+                           	</select>
+                       	</td>
+	            		
+	            		<td class="grid-col-left">
+                        	<select data-ng-click="selectColumn(filterOptions, $index)" ui-select2 data-ng-model="filterOption.selectedColumn" class="select2bottomMargin margin-top-0" style="width:200px;" placeholder="Choose Column">
+                            	<option></option>
+                               	<option data-ng-repeat="col in filterOption.column" value="{{col}}">{{col.displayColumn}}</option>
+                           	</select>
+                       	</td>
+	            		
+	            		<td class="grid-col-left">
+                        	<select data-ng-click="selectCriteria(filterOptions, $index)" ui-select2 data-ng-model="filterOption.selectedCriteria" class="select2bottomMargin margin-top-0" style="width:140px;" placeholder="Choose Criteria">
+                            	<option></option>
+                               	<option data-ng-repeat="criteria in filterOption.criterias" value="{{criteria}}">{{criteria.displayText}}</option>
+                           	</select>
+                       	</td>
+                       	
+                       	<td class="grid-col-left">
+                       		
+                       		<div data-ng-show="filterOption.showTextValue">
+								<input type="text" class="form-control" placeholder="Enter Value" data-ng-model="filterOption.textValue" />
+							</div>
+                       		
+                       		<div data-ng-show="filterOption.showSelectValue">
+								<select ui-select2 data-ng-model="filterOption.selectValue" class="select2bottomMargin margin-top-0" style="width: 100%;" placeholder="Select">
+	                            	<option></option>
+	                               	<option data-ng-repeat="val in filterOption.selectValueList" value="{{val.actualValue}}">{{val.displayValue}}</option>
+	                           	</select>
+							</div>
+                       		
+                       		<div data-ng-show="filterOption.showDateValue">
+								<input type="text" class="form-control" placeholder="Enter Date" data-ng-model="filterOption.dateValue" my-calendar />
+							</div>
+                       		
+                       		<div data-ng-show="filterOption.showBetweenDateValue">
+								<input type="text" class="form-control" placeholder="From Date" data-ng-model="filterOption.fromDateValue" style="width:47%;float:left;margin-right: 15px;" my-calendar />
+								<input type="text" class="form-control" placeholder="To Date" data-ng-model="filterOption.toDateValue" style="width:48.9%;" my-calendar />
+							</div>
+                       		
+                       		<div data-ng-show="filterOption.showNumberValue">
+								<input type="text" class="form-control" placeholder="Enter Number" data-ng-model="filterOption.numberValue" />
+							</div>
+                       		
+                       		<div data-ng-show="filterOption.showBetweenNumberValue">
+								<input type="text" class="form-control" placeholder="From Number" data-ng-model="filterOption.fromNumberValue" style="width:47%;float:left;margin-right: 15px;" />
+								<input type="text" class="form-control" placeholder="To Number" data-ng-model="filterOption.toNumberValue" style="width:48.9%;" />
+							</div>
+                       	</td>
+                       	
+                       	<td class="grid-col-right">
+                       		<button class="btn btn-xs btn-danger" data-ng-click="deleteRow(filterOptions, $index)" data-toggle="tooltip" data-placement="right" title="Remove"><i class="glyphicon glyphicon-trash"></i></button>
+                       	</td>
+                       	
+	            	</tr>
+	            </tbody>
+	    	
+	    	</table>
+	
+		</div>
+		
+	    <div class="modal-footer">
+	    	<button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
+	        <button class="btn btn-primary" data-ng-click="applyFilter(filterOptions)">Apply Filter</button>
+		</div>
+	
+	</form>
+
+</div>
+
+
+
+

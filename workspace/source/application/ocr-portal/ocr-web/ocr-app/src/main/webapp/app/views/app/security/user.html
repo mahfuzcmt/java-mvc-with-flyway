@@ -1,0 +1,99 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>Add User</h1>
+	<ol class="breadcrumb">
+		<li><a href="#/auctionlist"><i class="fa fa-dashboard"></i>List of Auction</a></li>
+		<li class="active">Add User</li>
+	</ol>
+</section>
+
+<section class="content">
+					
+	<div class="row">
+		<div class="col-md-12">
+			<div data-ng-include="messagePageLocation"></div>
+		</div>
+	</div>
+
+	<div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">User Form</h3>
+                </div>
+                
+                <div class="box-body">
+					<form role="form" name="changepasswordform">
+						<div class="row">
+							<div class="col-md-6">
+								<section id="basic">
+                    
+									<div class="form-group">
+										<label>Login ID<span class="mandatory">*</span></label>
+										<input type="text" id="loginID" class="form-control" placeholder="Enter Login ID" data-ng-model="user.loginID" data-ng-disabled="!isNewUser" />
+									</div>
+			                    
+									<div class="form-group" data-ng-hide="!isNewUser">
+										<label>Password<span class="mandatory">*</span></label>
+										<input type="password" id="newPassword" class="form-control" placeholder="Enter Password" data-ng-model="user.password" />
+									</div>
+			                    
+									<div class="form-group" data-ng-hide="!isNewUser">
+										<label>Confirm Password<span class="mandatory">*</span></label>
+										<input type="password" id="confirmPassword" class="form-control" placeholder="Enter Confirm Password" data-ng-model="user.confirmPassword" />
+									</div>
+									
+									<div class="form-group">
+										<label>Name<span class="mandatory">*</span></label>
+										<input type="text" id="name" class="form-control" placeholder="Enter Name" data-ng-model="user.name" />
+									</div>
+															
+									<div class="form-group">
+										<label>Role<span class="mandatory">*</span></label>
+										<select data-ng-model="user.roleID" ui-select2 class="form-control selection-box" data-placeholder="Select Role">
+			                            	<option></option>
+			                               	<option data-ng-selected="{{role.roleID == user.roleID}}" data-ng-repeat="role in roles" value="{{role.roleID}}">{{role.roleDescription}}</option>
+			                           	</select>
+									</div>
+												
+									<div class="form-group">
+										<label>Status<span class="mandatory">*</span></label>
+										<select data-ng-model="user.status" ui-select2 class="form-control selection-box" data-placeholder="Select Status">
+			                               	<option data-ng-selected="{{obj.value == role.status}}" data-ng-repeat="obj in statusList" value="{{obj.value}}">{{obj.displayText}}</option>
+			                           	</select>
+									</div>
+									
+								</section>
+							</div>
+							<div class="col-md-6">
+								<section id="userimage">
+												
+									<div class="form-group">
+										<div class="fileinput-preview thumbnail" style="width: 150px; height: 185px;">
+											<img id="profilePic" data-ng-src="{{user.imagePath}}" width="150px" height="180px" />
+										</div>
+										<span class="btn btn-default btn-file">
+									    	<span class="fileinput-new">Upload Image</span>
+											<input type="file" ng-file-select name="upload" accept="image/*" ng-file-change="upload($files)" />
+								    	</span>
+									</div>
+									
+								</section>
+							</div>
+						</div>
+                    
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary" data-ng-click="saveUser(user)">{{btnSave}}</button>
+                        	<button class="btn btn-default" data-ng-click="resetUser()">Reset</button>
+						</div>
+
+                	</form>
+				</div>
+                	
+            </div>
+        </div>
+    </div>
+
+</section>
+
+

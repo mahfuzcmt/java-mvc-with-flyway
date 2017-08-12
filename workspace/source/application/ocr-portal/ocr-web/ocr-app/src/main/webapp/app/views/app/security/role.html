@@ -1,0 +1,125 @@
+<section class="content-header">
+    <h1>Add Role</h1>
+    <ol class="breadcrumb">
+        <li><a href="#/auctionlist"><i class="fa fa-dashboard"></i>List of Roles</a></li>
+        <li class="active">Add Role</li>
+    </ol>
+</section>
+<section class="content">
+    <form role="form" name="roleform">
+        <div class="row">
+            <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Role ID<span class="mandatory">*</span></label>
+                        <input type="text" id="roleID" class="form-control" placeholder="Enter Role ID" data-ng-model="role.roleID" />
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea type="text" id="description" class="form-control" rows="2" placeholder="Enter Description" data-ng-model="role.roleDescription"></textarea>
+                    </div>
+            </div>
+            <div class="col-md-6">
+                  <div class="form-group">
+                      <label>Level<span class="mandatory">*</span></label>
+                      <select data-ng-model="role.category" ui-select2 class="form-control selection-box" data-placeholder="Select Level" data-ng-change="changeLevel(role.category)">
+                          <option data-ng-selected="{{cat.value == role.category}}" data-ng-repeat="cat in categories" value="{{cat.key}}">{{cat.value}}</option>
+                      </select>
+                  </div>
+
+                  <div class="form-group">
+                      <label>Status<span class="mandatory">*</span></label>
+                      <select data-ng-model="role.status" ui-select2 class="form-control selection-box" data-placeholder="Select Status">
+                          <option data-ng-selected="{{obj.key == role.status}}" data-ng-repeat="obj in statusList" value="{{obj.key}}">{{obj.value}}</option>
+                      </select>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="margin-left-20"> Access Permission</h3>
+            <div class="col-md-8" data-ng-repeat="module in masterjson.children[0].children">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="checkbox checkbox-primary" data-ng-click="generateJson(module);">
+                            <input id="{{module.id}}" type="checkbox" data-ng-checked="{{module.enable}}" data-ng-model="module.enable" />
+                            <label for="{{module.id}}"> {{module.text}}</label>
+                        </div>
+                    </div>
+                    <table class="table table-bordered" data-ng-if="module.children.length > 0  && module.id !== 'reports' ">
+                        <thead>
+                            <tr>
+                                <th class="width-20 grid-col-left"></th>
+                                <th class="width-5 grid-col-center bg-gray">Full Access</th>
+                                <th class="width-5 grid-col-center">View</th>
+                                <th class="width-5 grid-col-center">Create</th>
+                                <th class="width-5 grid-col-center">Edit</th>
+                                <th class="width-5 grid-col-center">Delete</th>
+                                <th class="width-20 grid-col-left text-info">More Permissions </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="menu in module.children">
+                                <td class="width-20 grid-col-left">{{menu.text}}</td>
+                                <td class="grid-col-center bg-gray">
+                                    <div class="checkbox checkbox-info" data-ng-click="generateJson(menu, 'isfullaccess');">
+                                        <input type="checkbox" data-ng-checked="{{menu.isfullaccess}}" data-ng-model="menu.isfullaccess" />
+                                        <label></label>
+                                    </div>
+                                </td>
+                                <td class="grid-col-center">
+                                    <div class="checkbox checkbox-info" data-ng-click="generateJson(menu, 'isview');">
+                                        <input type="checkbox" data-ng-checked="{{menu.isview}}" data-ng-model="menu.isview" />
+                                        <label></label>
+                                    </div>
+                                    <td class="grid-col-center">
+                                        <div class="checkbox checkbox-info" data-ng-click="generateJson(menu, 'iscreate');">
+                                            <input type="checkbox" data-ng-checked="{{menu.iscreate}}" data-ng-model="menu.iscreate" />
+                                            <label></label>
+                                        </div>
+                                    </td>
+                                    <td class="grid-col-center">
+                                        <div class="checkbox checkbox-info" data-ng-click="generateJson(menu, 'isedit');">
+                                            <input type="checkbox" data-ng-checked="{{menu.isedit}}" data-ng-model="menu.isedit" />
+                                            <label></label>
+                                        </div>
+                                    </td>
+                                    <td class="grid-col-center">
+                                        <div class="checkbox checkbox-danger" data-ng-click="generateJson(menu, 'isdelete');">
+                                            <input type="checkbox" data-ng-checked="{{menu.isdelete}}" data-ng-model="menu.isdelete" />
+                                            <label></label>
+                                        </div>
+                                    </td>
+
+                                    <td data-ng-show="{{menu.workflow}}" class="width-50 grid-col-left">
+                                        <div class="checkbox checkbox-inline checkbox-info" data-ng-repeat="workflow in menu.workflowmodel">
+                                            <div>
+                                                <input class="dropdown" id="{{menu.id}}{{workflow.id}}{{$index}}" type="checkbox" data-ng-checked="{{workflow.enable}}" data-ng-model="workflow.enable" />
+                                                <label class="dropdown" for="{{menu.id}}{{workflow.id}}{{$index}}">{{workflow.text}}</label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td data-ng-show="!{{menu.workflow}}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-bordered" data-ng-if="module.id === 'reports' ">
+                        <tbody>
+                            <tr data-ng-repeat="menu in module.children">
+                                <td class="grid-col-left">
+                                    <div class="checkbox checkbox-info">
+                                        <input class="dropdown" id="{{menu.id}}" type="checkbox" data-ng-checked="{{menu.enable}}" data-ng-model="menu.enable" data-ng-click="generateJson(menu);" />
+                                        <label class="dropdown" for="{{menu.id}}">{{menu.text}}</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="w3-btn w3-teal" data-ng-click="saveRole(role)">{{btnSave}}</button>
+            <button class="btn btn-default" data-ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+</section>

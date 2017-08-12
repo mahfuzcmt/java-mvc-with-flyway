@@ -1,0 +1,200 @@
+<section class="content-header animated slideInDown">
+    <h1>Dashboard</h1>
+    <ol class="breadcrumb">
+        <li><a href="#/orgDashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Total Receivables</h4>
+            <div class="balances-row">
+
+                <table class="table table-bordered text-left">
+                    <tbody>
+                        <tr>
+                            <td colspan="2">
+                                <div style="padding: 5px 1px">
+                                    <small class="text-muted">Total Receivables BDT {{dashboard.receivableProgress.total | number:2}} </small>
+                                </div>
+                                <div class="progress sm progress-striped active">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{dashboard.receivableProgress.progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{dashboard.receivableProgress.progress}}%">
+                                        <span class="sr-only">80% Complete</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="pointer" style="border: 0px solid #ddd;">
+                                <div class="current-balance">
+                                    <small class="text-open uppercase">Current</small>
+                                    <div class="legend over-flow" title="BDT0.00">BDT {{dashboard.receivableProgress.currentReceivable | number:2}}</div>
+                                </div>
+
+                            </td>
+                            <td>
+
+                                <div class="popover-container">
+                                    <div class="overdue-balance">
+                                        <small class="text-overdue uppercase">Overdue</small>
+                                        <div title="BDT0.00">
+                                            <div id="ember1818" class="legend cursor-pointer over-flow ember-view">BDT {{dashboard.receivableProgress.overDue | number:2}}
+                                                <b class="caret"></b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h4>Total Payable</h4>
+            <div class="balances-row">
+
+                <table class="table table-bordered text-left">
+                    <tbody>
+                        <tr>
+                            <td colspan="2">
+                                <div style="padding: 5px 1px">
+                                    <small class="text-muted">Total unpaid bills BDT{{dashboard.payableProgress.total | number:2}} </small>
+                                </div>
+                                <div class="progress sm progress-striped active">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{dashboard.payableProgress.progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{dashboard.payableProgress.progress}}%">
+                                        <span class="sr-only">80% Complete</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="pointer" style="border: 0px solid #ddd;">
+                                <div class="current-balance">
+                                    <small class="text-open uppercase">Current</small>
+                                    <div class="legend over-flow" title="BDT0.00">BDT{{dashboard.payableProgress.currentPayable | number:2}}</div>
+                                </div>
+
+                            </td>
+                            <td>
+
+                                <div class="popover-container">
+                                    <div class="overdue-balance">
+                                        <small class="text-overdue uppercase">Overdue</small>
+                                        <div title="BDT0.00">
+                                            <div id="ember1818" class="legend cursor-pointer over-flow ember-view">BDT {{dashboard.payableProgress.overDue | number:2}}
+                                                <b class="caret"></b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="pull-left">Cash Flow</h4>
+
+            <div class="pull-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="ng-binding">This Financial Year<i class="caret"></i></span>
+                </a>
+            </div>
+
+            <div class="balances-row">
+
+                <table class="table table-bordered text-left">
+                    <tbody>
+                        <tr>
+                            <td class="pointer" style="border: 0px solid #ddd;">
+                                <div class="current-balance">
+
+                                    <highchart config="columnChartConfig"></highchart>
+
+                                </div>
+
+                            </td>
+                            <td width="22%">
+
+                                <div class="text-right balance-container">
+                                    <div class="balance-row">
+                                        <div>
+                                            <div class="text-muted">Cash as on {{dashboard.cashFlowByFP.periodStartDate}}</div>
+                                            <div class="legend over-flow ">BDT {{dashboard.cashFlowByFP.openingBalance | number:2}}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="balance-row">
+                                        <div>
+                                            <div class="text-moneyin">Incoming</div>
+                                            <div class="legend over-flow ">BDT {{dashboard.cashFlowByFP.incoming | number:2}}</div>
+                                        </div>
+                                        <div class="signs"> + </div>
+                                    </div>
+
+                                    <div class="balance-row">
+                                        <div>
+                                            <div class="text-moneyout">Outgoing</div>
+                                            <div class="legend over-flow ">BDT {{dashboard.cashFlowByFP.outgoing | number:2}}</div>
+                                        </div>
+                                        <div class="signs"> - </div>
+                                    </div>
+
+                                    <div class="balance-row">
+                                        <div>
+                                            <div class="text-open">Cash as on {{dashboard.cashFlowByFP.periodEndDate}}</div>
+                                            <div class="legend over-flow">BDT {{dashboard.cashFlowByFP.ledgerBalance | number:2}}</div>
+                                        </div>
+                                        <div class="signs"> = </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="pull-left">Bank Accounts Balance</h4>
+
+            <table st-table="displayedCollection" class="table table-hover table-responsive grid-table" st-safe-src="rowCollection">
+                <thead>
+                    <tr>
+                        <th st-sort="name">Bank</th>
+                        <th st-sort="name">Account Name</th>
+                        <th st-sort="name">Account No</th>
+                        <th st-sort="name" class="text-right">Account Balance</th>
+                        <th st-sort="status" class="grid-col-center">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="row in displayedCollection | limitTo : itemsPerPage" data-ng-click="editData(row.oid)">
+                        <td width="20%">{{row.name}}</td>
+                        <td width="20%">{{row.accountName}}</td>
+                        <td width="20%">{{row.accountNumber}}</td>
+                        <td width="15%" class="text-right">{{row.accountBalance | number:2}}</td>
+                        <td class="grid-col-center" width="25%">
+                            <span class="green" data-ng-show="row.status =='Active'">Active</span>
+                            <span class="red" data-ng-show="row.status =='Inactive'">Inactive</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

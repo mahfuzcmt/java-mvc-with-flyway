@@ -1,0 +1,18 @@
+<section class="sidebar" data-ng-controller="appLeftMenuController">
+    <ul class="sidebar-menu">
+    	<li data-ng-repeat="item in menu" data-ng-class="{ 'treeview' : item.active }" id="{{item.id}}">
+    		<a data-ng-click="clickTopItem(item)" class="link-pointer">
+                <i class="{{item.class}}"></i>
+                <span>{{item.text}}</span>
+                <i class="fa pull-right fa-angle-left" data-ng-if="item.children.length > 0"></i>
+            </a>
+            <ul class="treeview-menu" data-ng-if="item.children.length > 0">
+                <li data-ng-repeat="childItem in item.children" data-ng-class="{'active' : childItem.active}" data-ng-click="clickChildItem(item.children, childItem, $index)" id="{{childItem.id}}">
+                	<a class="link-pointer"><i class="{{childItem.class}}"></i> {{childItem.text}}</a>
+                </li>
+	        </ul>
+    	</li>
+    </ul>
+</section>
+
+

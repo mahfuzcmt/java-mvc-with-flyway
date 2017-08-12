@@ -1,0 +1,7 @@
+<a>
+	<div style="height:45px; width:300px;">
+	    <img data-ng-src="{{match.model.productImagePath}}" width="40" height="40" class="pull-left"/>
+	    <span style="display:block; padding:10px 0px 0px 5px; vertical-align:middle; margin-left : 50px;" ng-bind-html="match.model.name | typeaheadHighlight:query"></span>
+	    <!-- <span ng-bind-html="match.label | typeaheadHighlight:query"></span> -->
+	</div>
+</a>

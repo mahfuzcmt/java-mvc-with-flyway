@@ -1,0 +1,39 @@
+<a href="#/home" class="logo">
+    <span class="doms-text">OCRS</span>
+</a>
+
+<nav class="navbar navbar-static-top" role="navigation" data-ng-controller="appHeaderController">
+    <a class="navbar-btn sidebar-toggle link-pointer" data-toggle="offcanvas" role="button" data-ng-click="menuToggle()">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <div class="navbar-right">
+        <ul class="nav navbar-nav">
+            <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span>{{userInfo.loginID}} <i class="caret"></i></span>
+                </a>
+                <div class="dropdown-menu company-menu">
+                    <div class="flyout-header">
+                        <div class="section aliceblue-bg" style="border-bottom: 1px solid #EDEDED;">
+                            <div class="user-pro clearfix text-center">
+                                <h3><img class="profile-pic" data-ng-src="{{userInfo.imagePath}}"></h3>
+                                <div class="over-flow">{{userInfo.name}}</div>
+                                <p class="profile-accounts">
+                                    <a class="myaccount" data-ng-click="gotoDetailPage();">My Profile</a>
+                                    <span class="text-semi-muted" style="padding:0 10px;">|</span>
+                                    <a data-ng-click="gotoNewPage('changePassword')" class="myaccount">Password</a>
+                                    <span class="text-semi-muted" style="padding:0 10px;">|</span>
+                                    <a class="signout" data-ng-click="logout()">Sign Out</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+	</div>
+</nav>

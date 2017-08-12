@@ -1,0 +1,50 @@
+
+apply plugin: 'build-dashboard'
+apply plugin: 'net.anshulverma.gradle.estilo'
+
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		classpath 'net.anshulverma.gradle:gradle-estilo-plugin:0.4.8'
+	}
+}
+
+
+subprojects {
+
+	apply plugin: 'maven'
+	apply plugin: 'java'
+	apply plugin: 'eclipse-wtp'
+
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+	
+	version = '0.1'
+  	group = "com.ticl.doms"
+	
+	ext {
+		guavaVersion='20.+'
+		gsonVersion='2.3.1'
+		springFrameworkVersion="4.2.5.RELEASE"
+		springSecurityVersion="3.2.9.RELEASE"
+		jerseyVersion="2.22.2"
+		logbackVersion="1.1.6"
+		junitVersion='4.8.2'
+		mockitoVersion = '1.10.19'
+	}
+
+	repositories {
+		mavenLocal()
+		mavenCentral()
+		jcenter()
+	}
+	
+	jar {
+		manifest.attributes provider: 'gradle'
+	}
+	
+}
+

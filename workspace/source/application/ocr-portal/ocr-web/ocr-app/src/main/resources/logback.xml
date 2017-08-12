@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="3 seconds">
+	<property resource="jdbc.properties" />
+	<property scope="context" name="COLORIZER_COLORS" value="boldred@,boldyellow@,boldgreen@,boldcyan@,boldblue@" />
+	<conversionRule conversionWord="colorize" converterClass="org.tuxdude.logback.extensions.LogColorizer" />
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<withJansi>false</withJansi>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%colorize(%d{"yyyy-MM-dd HH:mm:ss,SSS"}) %colorize(%-5level) %colorize(%logger{36}:%L - %msg) %colorize(%rEx) %nopex %n</pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.dir}/doms-portal.log</file>
+		<prudent>false</prudent>
+		<append>true</append>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.dir}/doms-portal_%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d{"yyyy-MM-dd HH:mm:ss,SSS"} %-5level %logger{36}:%L - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

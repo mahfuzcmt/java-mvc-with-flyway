@@ -1,0 +1,63 @@
+<section class="content-header">
+    <h1>{{heading}}</h1>
+    <ol class="breadcrumb">
+        <li><a href="#/orgdashboard"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        <li class="active">{{heading}}</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div data-ng-include="messagePageLocation"></div>
+        </div>
+    </div>
+     <form role="form" name="contactForm">
+    	<div class="row">
+       
+            <div class="col-md-8">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">TO</span>
+                        <input  type="text" data-ng-model="email.emailtos" class="form-control" placeholder="Email TO">
+                    </div>
+                </div>
+                <div class="form-group">
+                     <div class="input-group">
+                         <span class="input-group-addon">CC</span>
+                         <input  type="text"  data-ng-model="email.emailccs" class="form-control" placeholder="Email CC">
+                     </div>
+                </div>
+                <div class="form-group">
+                      <div class="input-group">
+                          <span class="input-group-addon">BCC</span>
+                          <input  type="text"  data-ng-model="email.emailbccs"  class="form-control" placeholder="Email BCC">
+                      </div>
+                </div>
+                <div class="form-group">
+                      <div class="input-group">
+                          <span class="input-group-addon">Subject</span>
+                          <input  type="text"  data-ng-model="email.subject"  class="form-control" placeholder="Email Subject">
+                      </div>
+                </div>
+                <div class="form-group">
+                <trix-editor angular-trix data-ng-model="email.text"></trix-editor>
+                    <!-- <div richtexteditor></div>  -->
+                </div>
+                <div class="form-group">
+                       <div class="btn btn-success btn-file">
+                           <i class="fa fa-paperclip"></i> Attachment
+                           <input type="file" name="attachment">
+                       </div>
+                       <p class="help-block">Max. 32MB</p>
+                </div>
+            </div>
+           </div>
+        </form>
+        <div class="col-md-6">
+            <button type="submit" class="w3-btn w3-teal" data-ng-click="sendEmail(email)">Send Message</button>
+            <button class="w3-btn w3-sand" data-ng-click="cancel()">Cancel</button>
+        </div>
+
+</section>
+

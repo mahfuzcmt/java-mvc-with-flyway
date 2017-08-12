@@ -1,0 +1,17 @@
+
+dependencies {
+	compile project(':ocr-core')
+	compile project(':ocr-websocket')
+}
+
+sourceSets {
+	main {
+        java {
+            srcDir 'src/java'
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    }
+}
+

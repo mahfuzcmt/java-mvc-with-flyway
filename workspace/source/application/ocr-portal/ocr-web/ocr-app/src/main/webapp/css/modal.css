@@ -1,0 +1,57 @@
+/* Custom dialog/modal headers */
+.modal-header-error { background-color: #d2322d; }
+.modal-header-wait { background-color: #428bca; }
+.modal-header-notify { background-color: #eeeeee; }
+.modal-header-confirm { background-color: rgba(0, 68, 204, 0.69) !important; }
+.modal-header-error span, .modal-header-error h4,
+.modal-header-wait span, .modal-header-wait h4,
+.modal-header-confirm span, .modal-header-confirm h4 { color: #ffffff; }
+.modal-header { background-color: #f5f5f5; }
+.modal-backdrop { background-color: #fff; }
+.modal-header .close { margin: 10px 5px; }
+.modal-body { padding: 20px; }
+.modal-footer { text-align: left; }
+.modal-content { border-radius: 0px; }
+
+@keyframes fadeOut
+{
+  from { opacity: 1.0; }
+  to { opacity: 0.0; }
+}
+
+@-webkit-keyframes fadeOut 
+{
+  from { opacity: 1.0 }
+  to { opacity: 0.0 }
+}
+
+.fade-out
+{ 
+  animation: fadeOut 2s infinite;
+  -webkit-animation: fadeOut 2s infinite;
+}
+
+.animate-show, .animate-hide {
+  -webkit-transition:all linear 1s;
+  -moz-transition:all linear 1s;
+  -ms-transition:all linear 1s;
+  -o-transition:all linear 1s;
+  transition:all linear 1s;
+
+}
+
+.animate-show {
+  opacity:0;
+}
+
+.animate-show.animate-show-active {
+  opacity:1;
+}
+
+.animate-hide {
+  opacity:1;
+}
+
+.animate-hide.animate-hide-active {
+  opacity:0;
+}

@@ -1,0 +1,1 @@
+include 'ocr-core', 'ocr-websocket', 'ocr-security', 'ocr-dashboard'

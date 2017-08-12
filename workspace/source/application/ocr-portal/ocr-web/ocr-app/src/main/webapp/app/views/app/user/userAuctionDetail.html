@@ -1,0 +1,99 @@
+<section class="content-header">
+   <h1>Auction Detail</h1>
+   <ol class="breadcrumb">
+      <li><a href="#/userauctionlist"><i class="fa fa-dashboard"></i>List of Auction</a></li>
+      <li class="active">Auction Detail</li>
+   </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="row" style="margin-top: -10px;">
+		<div class="col-md-12">
+			<div data-ng-include="messagePageLocation"></div>
+		</div>
+	</div>
+   <div class="row">
+      <div class="col-md-8">
+         <div class="box box-primary">
+            <div class="box-header">
+               <h3 class="box-title">Auction Information</h3>
+            </div>
+            <div class="box-body no-padding">
+               <table class="table">
+                  <thead>
+                     <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Join Time Duration</th>
+                        <th>Break Duration</th>
+                        <th>Break Limit</th>
+                        <th style="width: 40px">Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>{{data.auctionData.title}}</td>
+                        <td>{{data.auctionData.basePrice | number:2}}</td>
+                        <td>{{data.auctionData.description}}</td>
+                        <td>{{data.auctionData.joinDurationTime}} sec.</td>
+                        <td>{{data.auctionData.breakDurationPerBidder}} sec.</td>
+                        <td>{{data.auctionData.breakLimit}}</td>
+                        <td>{{data.auctionData.status}}</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-4" >
+         <div data-ng-show="joinTimer.isShow">
+            <div class="small-box bg-purple">
+               <div class="inner">
+                  <h1 style="font-size: -webkit-xxx-large;color: white;">
+                     {{joinTime}}
+                  </h1>
+                  <p>Seconds</p>
+               </div>
+               <div class="icon">
+                  <i class="ion ion-ios7-alarm-outline"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+    
+     
+   
+   	<div class="row">
+      <div class="col-md-12">
+            <div class="box box-primary">
+            <div class="box-header">
+               <h3 class="box-title">List of Bidder</h3>
+            </div>
+            <div class="box-body table-responsive no-padding">
+               <table class="table">
+                  <thead>
+                     <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Bidder Name</th>
+                        <th>Status</th>
+                        <th>Request Time</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr data-ng-repeat="obj in bidderData">
+                        <td>{{$index+1}}.</td>
+                        <td>{{obj.name}}</td>
+                        <td>{{obj.status}}</td>
+	                    <td>{{obj.requestTime | date:'MMM d, y h:mm:ss a' }}</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+        </div>
+      </div>
+      
+</section>

@@ -1,0 +1,43 @@
+
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+buildDir = 'war'
+war.archiveName "ocr-app.war"
+
+dependencies {
+	compile project(':ocr-core')
+	compile project(':ocr-security')
+	compile project(':ocr-websocket')
+	compile project(':ocr-dashboard')
+
+}
+
+war {
+	from('resources')  {
+        include '*.properties'
+		include '*.xml'
+        into 'WEB-INF/classes/'
+    }
+    webXml = file('src/main/webapp/WEB-INF/web.xml')
+}
+
+
+sourceSets {
+	main {
+        java {
+            srcDir 'src/java'
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    }
+	test {
+        java {
+            srcDir 'src/java'
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    }
+}
